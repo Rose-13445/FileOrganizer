@@ -1,0 +1,66 @@
+using System;
+using System.IO;
+using System.Windows.Forms;
+
+namespace FileOrganizer;
+
+public partial class Form1 : Form
+{
+    public Form1()
+    {
+        InitializeComponent();
+    }
+
+    private void Form1_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void btnSelectFolder_Click(object sender, EventArgs e)
+    {
+        using var folderDialog = new FolderBrowserDialog();
+        if (folderDialog.ShowDialog() == DialogResult.OK)
+        {
+            lblFolderPath.Text = folderDialog.SelectedPath;
+        }
+    }
+
+    private void btnOrganize_Click(object sender, EventArgs e)
+    {
+        string folderPath = lblFolderPath.Text;
+
+        if (!Directory.Exists(folderPath))
+        {
+            MessageBox.Show("Please select a valid folder first.");
+            return;
+        }
+
+        string[] files = Directory.GetFiles(folderPath);
+
+        foreach (string file in files)
+        {
+            string extension = Path.GetExtension(file).TrimStart('.').ToLower();
+            if (string.IsNullOrWhiteSpace(extension))
+                extension = "no_extension";
+
+            string newFolder = Path.Combine(folderPath, extension);
+            if (!Directory.Exists(newFolder))
+                Directory.CreateDirectory(newFolder);
+
+            string fileName = Path.GetFileName(file);
+            string newPath = Path.Combine(newFolder, fileName);
+
+            try
+            {
+                File.Move(file, newPath);
+                lstLog.Items.Add($"Moved {fileName} -> {extension} folder");
+            }
+            catch (Exception ex)
+            {
+                lstLog.Items.Add($"Error moving {fileName}: {ex.Message}");
+            }
+        }
+
+        MessageBox.Show("Organization Complete!");
+    }
+}
