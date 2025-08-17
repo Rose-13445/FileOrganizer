@@ -35,12 +35,13 @@ partial class Form1
         lblFolderPath = new Label();
         btnOrganize = new Button();
         lstLog = new ListBox();
+        btnUndo = new Button();
         SuspendLayout();
         // 
         // btnSelectFolder
         // 
         btnSelectFolder.Anchor = AnchorStyles.Bottom;
-        btnSelectFolder.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnSelectFolder.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnSelectFolder.Location = new Point(12, 27);
         btnSelectFolder.Name = "btnSelectFolder";
         btnSelectFolder.Size = new Size(97, 23);
@@ -52,15 +53,16 @@ partial class Form1
         // lblFolderPath
         // 
         lblFolderPath.AutoSize = true;
+        lblFolderPath.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
         lblFolderPath.Location = new Point(12, 9);
         lblFolderPath.Name = "lblFolderPath";
-        lblFolderPath.Size = new Size(103, 15);
+        lblFolderPath.Size = new Size(111, 16);
         lblFolderPath.TabIndex = 1;
         lblFolderPath.Text = "No folder selected";
         // 
         // btnOrganize
         // 
-        btnOrganize.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnOrganize.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnOrganize.Location = new Point(115, 27);
         btnOrganize.Name = "btnOrganize";
         btnOrganize.Size = new Size(95, 23);
@@ -71,18 +73,30 @@ partial class Form1
         // 
         // lstLog
         // 
+        lstLog.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
         lstLog.FormattingEnabled = true;
-        lstLog.ItemHeight = 15;
         lstLog.Location = new Point(12, 56);
         lstLog.Name = "lstLog";
-        lstLog.Size = new Size(776, 379);
+        lstLog.Size = new Size(776, 372);
         lstLog.TabIndex = 3;
+        // 
+        // btnUndo
+        // 
+        btnUndo.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnUndo.Location = new Point(713, 27);
+        btnUndo.Name = "btnUndo";
+        btnUndo.Size = new Size(75, 23);
+        btnUndo.TabIndex = 4;
+        btnUndo.Text = "Undo";
+        btnUndo.UseVisualStyleBackColor = true;
+        btnUndo.Click += btnUndo_Click;
         // 
         // Form1
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
+        Controls.Add(btnUndo);
         Controls.Add(lstLog);
         Controls.Add(btnOrganize);
         Controls.Add(lblFolderPath);
@@ -100,4 +114,5 @@ partial class Form1
     private Label lblFolderPath;
     private Button btnOrganize;
     private ListBox lstLog;
+    private Button btnUndo;
 }

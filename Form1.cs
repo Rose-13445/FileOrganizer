@@ -63,4 +63,9 @@ public partial class Form1 : Form
 
         MessageBox.Show("Organization Complete!");
     }
+
+    private void btnUndo_Click(object sender, EventArgs e)
+    {
+        //Move files back to original path from their new path
+    }
 }
