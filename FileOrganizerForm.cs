@@ -1,12 +1,13 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
 namespace FileOrganizer;
 
-public partial class Form1 : Form
+public partial class FileOrganizerForm : Form
 {
-    public Form1()
+    public FileOrganizerForm()
     {
         InitializeComponent();
     }
@@ -25,6 +26,7 @@ public partial class Form1 : Form
         }
     }
 
+    Dictionary<string, string> movedFiles = new();
     private void btnOrganize_Click(object sender, EventArgs e)
     {
         string folderPath = lblFolderPath.Text;
@@ -54,6 +56,7 @@ public partial class Form1 : Form
             {
                 File.Move(file, newPath);
                 lstLog.Items.Add($"Moved {fileName} -> {extension} folder");
+                movedFiles.Add(file, newPath);
             }
             catch (Exception ex)
             {
@@ -67,5 +70,29 @@ public partial class Form1 : Form
     private void btnUndo_Click(object sender, EventArgs e)
     {
         //Move files back to original path from their new path
+        if (movedFiles.Count > 0)
+        {
+            foreach (var file in movedFiles)
+            {
+                string fileName = Path.GetFileName(file.Key);
+
+                try
+                {
+                    File.Move(file.Value, file.Key);
+                    movedFiles.Remove(file.Key);
+                    lstLog.Items.Add($"Moved {fileName} back to original path");
+                }
+                catch (Exception ex)
+                {
+                    lstLog.Items.Add($"Error moving {fileName}: {ex.Message}");
+                }
+            }
+
+            MessageBox.Show("Undo complete!");
+        }
+        else
+        {
+            MessageBox.Show("There is nothing to undo.");
+        }
     }
 }

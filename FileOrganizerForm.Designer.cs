@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace FileOrganizer;
 
-partial class Form1
+partial class FileOrganizerForm
 {
     /// <summary>
     ///  Required designer variable.
@@ -44,7 +44,7 @@ partial class Form1
         btnSelectFolder.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnSelectFolder.Location = new Point(12, 27);
         btnSelectFolder.Name = "btnSelectFolder";
-        btnSelectFolder.Size = new Size(97, 23);
+        btnSelectFolder.Size = new Size(97, 22);
         btnSelectFolder.TabIndex = 0;
         btnSelectFolder.Text = "Select Folder";
         btnSelectFolder.UseVisualStyleBackColor = true;
@@ -54,7 +54,7 @@ partial class Form1
         // 
         lblFolderPath.AutoSize = true;
         lblFolderPath.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        lblFolderPath.Location = new Point(12, 9);
+        lblFolderPath.Location = new Point(12, 8);
         lblFolderPath.Name = "lblFolderPath";
         lblFolderPath.Size = new Size(111, 16);
         lblFolderPath.TabIndex = 1;
@@ -65,7 +65,7 @@ partial class Form1
         btnOrganize.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnOrganize.Location = new Point(115, 27);
         btnOrganize.Name = "btnOrganize";
-        btnOrganize.Size = new Size(95, 23);
+        btnOrganize.Size = new Size(95, 22);
         btnOrganize.TabIndex = 2;
         btnOrganize.Text = "Organize Files";
         btnOrganize.UseVisualStyleBackColor = true;
@@ -75,7 +75,7 @@ partial class Form1
         // 
         lstLog.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
         lstLog.FormattingEnabled = true;
-        lstLog.Location = new Point(12, 56);
+        lstLog.Location = new Point(12, 66);
         lstLog.Name = "lstLog";
         lstLog.Size = new Size(776, 372);
         lstLog.TabIndex = 3;
@@ -85,13 +85,13 @@ partial class Form1
         btnUndo.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnUndo.Location = new Point(713, 27);
         btnUndo.Name = "btnUndo";
-        btnUndo.Size = new Size(75, 23);
+        btnUndo.Size = new Size(75, 22);
         btnUndo.TabIndex = 4;
         btnUndo.Text = "Undo";
         btnUndo.UseVisualStyleBackColor = true;
         btnUndo.Click += btnUndo_Click;
         // 
-        // Form1
+        // FormOrganizer
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
@@ -101,8 +101,9 @@ partial class Form1
         Controls.Add(btnOrganize);
         Controls.Add(lblFolderPath);
         Controls.Add(btnSelectFolder);
-        Name = "Form1";
-        Text = "Form1";
+        Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        Name = "FormOrganizer";
+        Text = "File Organizer";
         Load += Form1_Load;
         ResumeLayout(false);
         PerformLayout();
