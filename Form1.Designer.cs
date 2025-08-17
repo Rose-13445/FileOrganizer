@@ -75,7 +75,7 @@ partial class Form1
         lstLog.ItemHeight = 15;
         lstLog.Location = new Point(12, 56);
         lstLog.Name = "lstLog";
-        lstLog.Size = new Size(448, 379);
+        lstLog.Size = new Size(776, 379);
         lstLog.TabIndex = 3;
         // 
         // Form1
