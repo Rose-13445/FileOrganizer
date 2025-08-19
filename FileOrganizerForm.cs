@@ -79,7 +79,6 @@ public partial class FileOrganizerForm : Form
                 try
                 {
                     File.Move(file.newPath, file.oldPath);
-                    movedFiles.Remove(file);
                     lstLog.Items.Add($"Moved {fileName} back to original path");
                 }
                 catch (Exception ex)
@@ -88,6 +87,7 @@ public partial class FileOrganizerForm : Form
                 }
             }
 
+            movedFiles.Clear();
             MessageBox.Show("Undo complete!");
         }
         else
