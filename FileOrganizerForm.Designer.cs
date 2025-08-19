@@ -91,7 +91,7 @@ partial class FileOrganizerForm
         btnUndo.UseVisualStyleBackColor = true;
         btnUndo.Click += btnUndo_Click;
         // 
-        // FormOrganizer
+        // FileOrganizer
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
@@ -102,9 +102,9 @@ partial class FileOrganizerForm
         Controls.Add(lblFolderPath);
         Controls.Add(btnSelectFolder);
         Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        Name = "FormOrganizer";
+        Name = "FileOrganizer";
         Text = "File Organizer";
-        Load += Form1_Load;
+        Load += FileOrganizerForm_Load;
         ResumeLayout(false);
         PerformLayout();
     }
