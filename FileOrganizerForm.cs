@@ -26,7 +26,7 @@ public partial class FileOrganizerForm : Form
         }
     }
 
-    Dictionary<string, string> movedFiles = new();
+    List<(string oldPath, string newPath)> movedFiles = new();
     private void btnOrganize_Click(object sender, EventArgs e)
     {
         string folderPath = lblFolderPath.Text;
@@ -56,7 +56,7 @@ public partial class FileOrganizerForm : Form
             {
                 File.Move(file, newPath);
                 lstLog.Items.Add($"Moved {fileName} -> {extension} folder");
-                movedFiles.Add(file, newPath);
+                movedFiles.Add((file, newPath));
             }
             catch (Exception ex)
             {
@@ -74,12 +74,11 @@ public partial class FileOrganizerForm : Form
         {
             foreach (var file in movedFiles)
             {
-                string fileName = Path.GetFileName(file.Key);
+                string fileName = Path.GetFileName(file.newPath);
 
                 try
                 {
-                    File.Move(file.Value, file.Key);
-                    movedFiles.Remove(file.Key);
+                    File.Move(file.newPath, file.oldPath);
                     lstLog.Items.Add($"Moved {fileName} back to original path");
                 }
                 catch (Exception ex)
@@ -88,6 +87,7 @@ public partial class FileOrganizerForm : Form
                 }
             }
 
+            movedFiles.Clear();
             MessageBox.Show("Undo complete!");
         }
         else
