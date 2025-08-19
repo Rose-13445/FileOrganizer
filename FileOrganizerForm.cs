@@ -12,7 +12,7 @@ public partial class FileOrganizerForm : Form
         InitializeComponent();
     }
 
-    private void Form1_Load(object sender, EventArgs e)
+    private void FileOrganizerForm_Load(object sender, EventArgs e)
     {
 
     }
@@ -89,6 +89,16 @@ public partial class FileOrganizerForm : Form
 
             movedFiles.Clear();
             MessageBox.Show("Undo complete!");
+
+            string parentFolder = lblFolderPath.Text;
+            foreach (string folder in Directory.GetDirectories(parentFolder))
+            {
+                if (Directory.GetFiles(folder).Length == 0 && Directory.GetDirectories(folder).Length == 0)
+                {
+                    Directory.Delete(folder);
+                    lstLog.Items.Add($"Deleted empty folder: {Path.GetFileName(folder)}");
+                }
+            }
         }
         else
         {
